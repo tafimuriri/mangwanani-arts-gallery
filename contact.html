@@ -5,7 +5,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Contact Mangwanani Art Gallery — enquire about Shona sculptures, pricing, and worldwide shipping from Zimbabwe.">
-  <title>Contact — Mangwanani Art Gallery</title>
+  <title>Contact — Mangwanani Art Gallery | Shona Sculpture Enquiries</title>
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tafimuriri.github.io/mangwanani-arts-gallery/contact.html">
+  <meta property="og:title" content="Contact Mangwanani Art Gallery — Enquire About Shona Sculptures">
+  <meta property="og:description" content="Get in touch with Mangwanani Art Gallery. Enquire about pricing, availability, and worldwide shipping of Shona sculptures from Zimbabwe.">
+  <meta property="og:image" content="https://tafimuriri.github.io/mangwanani-arts-gallery/img/header-bg.jpg">
+  <meta property="og:site_name" content="Mangwanani Art Gallery">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Mangwanani Art Gallery">
+  <meta name="twitter:description" content="Enquire about Shona sculptures, pricing and worldwide shipping from Zimbabwe.">
+  <meta name="twitter:image" content="https://tafimuriri.github.io/mangwanani-arts-gallery/img/header-bg.jpg">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ContactPage",
+    "name": "Contact Mangwanani Art Gallery",
+    "url": "https://tafimuriri.github.io/mangwanani-arts-gallery/contact.html",
+    "isPartOf": {
+      "@type": "ArtGallery",
+      "name": "Mangwanani Art Gallery",
+      "telephone": "+263772494464",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "4015 Nharira View",
+        "addressLocality": "Norton",
+        "addressCountry": "ZW"
+      }
+    }
+  }
+  </script>
   <link rel="icon" href="./img/header-bg.jpg">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -171,8 +201,16 @@
 
       <div id="formStatus" class="form-status" role="alert"></div>
 
-     
-      <form id="contactForm" action=https://formspree.io/f/meerldpk method="POST" novalidate>
+      <!--
+        FORMSPREE SETUP INSTRUCTIONS:
+        1. Go to https://formspree.io and create a free account
+        2. Create a new form — add the gallery's email address
+        3. Copy your unique form endpoint (looks like: https://formspree.io/f/xxxxxxxx)
+        4. Replace "YOUR_FORMSPREE_ENDPOINT" below with that URL
+        The form will then email submissions directly to the gallery's inbox.
+        No server or backend needed — works on GitHub Pages.
+      -->
+      <form id="contactForm" action="YOUR_FORMSPREE_ENDPOINT" method="POST" novalidate>
         <div class="form-row">
           <div class="form-group">
             <label for="name">Full Name *</label>

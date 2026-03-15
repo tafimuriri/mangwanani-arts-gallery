@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://tafimuriri.github.io/mangwanani-arts-gallery/sitemap.xml
