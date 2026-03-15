@@ -1,169 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Contact Mangwanani Art Gallery — enquire about Shona sculptures, pricing, and worldwide shipping from Zimbabwe.">
+  <title>Contact — Mangwanani Art Gallery</title>
+  <link rel="icon" href="./img/header-bg.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Contact Mangwanani Art Gallery — get in touch to enquire about our Shona sculptures and African handcrafts.">
-    <meta name="author" content="">
+  <style>
+    :root {
+      --black:   #0d0d0d;
+      --surface: #141414;
+      --surface2:#1c1c1c;
+      --gold:    #fed136;
+      --gold2:   #f3cd8c;
+      --text:    #e8e0d0;
+      --muted:   #8a8070;
+      --border:  rgba(243,205,140,0.15);
+      --error:   #e07070;
+      --success: #7ec89a;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    <title>Contact Mangwanani Arts</title>
-    <link rel="icon" href="./img/header-bg.jpg">
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(13,13,13,0.97); border-bottom: 1px solid var(--border); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--gold); display: block; }
 
-    <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    /* PAGE HERO */
+    .page-hero { padding: 9rem 4rem 5rem; background: var(--surface); border-bottom: 1px solid var(--border); }
+    .page-hero-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: #fff; line-height: 1.1; }
+    .page-hero-title em { font-style: italic; color: var(--gold2); }
+    .page-hero-sub { margin-top: 1.2rem; max-width: 520px; color: var(--muted); font-size: 0.97rem; }
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
-    <link href="http://eepurl.com/ddxxYL">
-    <!-- Theme CSS -->
-    <link href="css/agency.min.css" rel="stylesheet">
-    <!-- My Custom CSS -->
-    <link href="css/custom.css" rel="stylesheet">
-   
+    /* CONTACT LAYOUT */
+    .contact-body { display: grid; grid-template-columns: 1fr 1.4fr; min-height: 70vh; }
 
+    /* SIDEBAR */
+    .contact-sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 4rem 3rem; }
+    .sidebar-section { margin-bottom: 3rem; padding-bottom: 3rem; border-bottom: 1px solid var(--border); }
+    .sidebar-section:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .sidebar-label { font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .sidebar-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #fff; font-weight: 300; margin-bottom: 1rem; }
+    .contact-item { display: flex; align-items: center; gap: 0.8rem; margin-bottom: 0.8rem; font-size: 0.88rem; color: var(--text); }
+    .contact-item i { color: var(--gold); width: 18px; text-align: center; }
+    .social-row { display: flex; gap: 0.8rem; margin-top: 1rem; }
+    .social-btn { width: 38px; height: 38px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; transition: border-color 0.2s, color 0.2s; }
+    .social-btn:hover { border-color: var(--gold); color: var(--gold); }
+    .address { font-size: 0.85rem; color: var(--muted); line-height: 1.8; }
+
+    /* FORM PANEL */
+    .contact-form-panel { padding: 4rem 4rem; background: var(--black); }
+    .form-heading { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: #fff; font-weight: 300; margin-bottom: 0.4rem; }
+    .form-heading em { font-style: italic; color: var(--gold2); }
+    .form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 2.5rem; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; margin-bottom: 1.2rem; }
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1.2rem; }
+    .form-group label { font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); }
+    .form-group input, .form-group select, .form-group textarea {
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      padding: 0.85rem 1rem; font-family: 'Jost', sans-serif; font-size: 0.9rem; font-weight: 300;
+      outline: none; transition: border-color 0.2s; width: 100%;
+      -webkit-appearance: none; appearance: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--gold2); }
+    .form-group textarea { resize: vertical; min-height: 140px; }
+    .form-group select { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%238a8070' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; cursor: pointer; }
+    .form-group select option { background: var(--surface2); }
+
+    .submit-btn { background: var(--gold); color: var(--black); padding: 1rem 3rem; font-family: 'Jost', sans-serif; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; width: 100%; margin-top: 0.5rem; }
+    .submit-btn:hover { background: var(--gold2); transform: translateY(-1px); }
+    .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+    /* status messages */
+    .form-status { display: none; padding: 1rem 1.2rem; font-size: 0.85rem; margin-bottom: 1.5rem; border-left: 3px solid; }
+    .form-status.success { background: rgba(126,200,154,0.08); border-color: var(--success); color: var(--success); display: block; }
+    .form-status.error { background: rgba(224,112,112,0.08); border-color: var(--error); color: var(--error); display: block; }
+
+    /* FOOTER */
+    footer { background: #080808; border-top: 1px solid var(--border); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold2); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; transition: border-color 0.2s, color 0.2s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-credit { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-credit a { color: var(--gold2); transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--gold); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .page-hero { padding: 7rem 2rem 4rem; }
+      .contact-body { grid-template-columns: 1fr; }
+      .contact-sidebar { border-right: none; border-bottom: 1px solid var(--border); padding: 3rem 2rem; }
+      .contact-form-panel { padding: 3rem 2rem; }
+      .form-row { grid-template-columns: 1fr; }
+      footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
+    }
+  </style>
 </head>
+<body>
 
-<body id="page-top" class="index">
+  <nav id="mainNav">
+    <a class="nav-brand" href="index.html">Mangwanani Art Gallery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <!-- Navigation -->
-    <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                </button>
-                <a class="navbar-brand page-scroll" href="index.html">Mangwanani Art Gallery</a></div>
+  <div class="page-hero">
+    <p class="page-hero-label">Contact Us</p>
+    <h1 class="page-hero-title">Let's Talk About <em>Art</em></h1>
+    <p class="page-hero-sub">Interested in a piece, want to know more, or ready to order? Fill in the form and we'll get back to you as soon as possible.</p>
+  </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                      <li>
-                        <a href="index.html">Home</a>
-                      </li>
-                      <li>
-                        <a href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About Us</a>
-                    </li>
-                    <li>
-                        <a class="contact.html" href="#contact">Contact Us</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+  <div class="contact-body">
+
+    <!-- SIDEBAR -->
+    <div class="contact-sidebar">
+      <div class="sidebar-section">
+        <p class="sidebar-label">Direct Contact</p>
+        <h2 class="sidebar-title">Reach Us Directly</h2>
+        <div class="contact-item"><i class="fa fa-whatsapp"></i> +263 772 494 464</div>
+        <div class="contact-item"><i class="fa fa-weixin"></i> +86 159 4063 9461</div>
+        <div class="contact-item"><i class="fa fa-map-marker"></i>
+          <span class="address">4015 Nharira View<br>Norton, Zimbabwe</span>
         </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <h2 class="section-heading">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Leave Us With Your Details And We Will Get Back To You Soon !!.</h3>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-lg-12">
-                    <form name="sentMessage" id="contactForm" novalidate>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Your Name *" id="name" required data-validation-required-message="Please enter your name.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Your Email *" id="email" required data-validation-required-message="Please enter your email address.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                                <div class="form-group">
-                                    <input type="tel" class="form-control" placeholder="Your Phone *" id="phone" required data-validation-required-message="Please enter your phone number.">
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <textarea class="form-control" placeholder="Your Message *" id="message" required data-validation-required-message="Please enter a message."></textarea>
-                                    <p class="help-block text-danger"></p>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-12 text-center">
-                                <div id="success"></div>
-                                <button type="submit" class="btn btn-xl">Send Message</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-label">Social Media</p>
+        <h2 class="sidebar-title">Follow Our Work</h2>
+        <p style="font-size:0.85rem;color:var(--muted);margin-bottom:1rem;">See our latest pieces and updates on Facebook and WeChat.</p>
+        <div class="social-row">
+          <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+          <a href="https://a.meipian.me/3qi7euc" target="_blank" rel="noopener" class="social-btn" aria-label="WeChat"><i class="fa fa-weixin"></i></a>
+          <a href="#" class="social-btn" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
         </div>
-    </section>
-
-<footer>
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-4">
-                <ul class="list-inline quicklinks">
-                    <li><i class="fa fa-whatsapp"> +263772494464 </i></li>
-                    <br>
-                    <li><i class="fa fa-weixin"> +8615940639461 </i></li><br>
-                </ul>
-                <br>
-                <span class="copyright">Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Tafadzwa Muriritirwa</a> &copy; 2025</span>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline social-buttons">
-                    <li><a href="#"><i class="fa fa-twitter"></i></a>
-                    </li>
-                    <li><a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/?ref=br_rs"><i class="fa fa-facebook"></i></a>
-                    </li>
-                    <li><a href="https://a.meipian.me/3qi7euc"><i class="fa fa-weixin"></i></a>
-                    </li>
-                    <li><a href="#"><i class="fa fa-whatsapp"></i></a>
-                    </li>
-                </ul>
-            </div>
-            <div class="col-md-4">
-                <ul class="list-inline quicklinks">
-                    <li>Headquarters address: 4015 Nharira View Norton Zimbabwe</li>
-                    <br>
-                    <li><a href="contact.html">Privacy Policy</a></li>
-                    <li><a href="contact.html">Terms of Use</a></li>
-                    <li><a href="contact.html">Feedback Us / Enquiries</a></li>
-                </ul>
-            </div>
-        </div>
+      </div>
+      <div class="sidebar-section">
+        <p class="sidebar-label">Shipping</p>
+        <h2 class="sidebar-title">We Ship Worldwide</h2>
+        <p style="font-size:0.85rem;color:var(--muted);">We pack every piece carefully and ship internationally. Get in touch for a shipping quote to your location.</p>
+      </div>
     </div>
-</footer>
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- FORM -->
+    <div class="contact-form-panel">
+      <h2 class="form-heading">Send an <em>Enquiry</em></h2>
+      <p class="form-sub">Tell us what you're looking for and we'll respond within 1–2 business days.</p>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+      <div id="formStatus" class="form-status" role="alert"></div>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+     
+      <form id="contactForm" action=https://formspree.io/f/meerldpk method="POST" novalidate>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" placeholder="Your name" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone / WhatsApp</label>
+            <input type="tel" id="phone" name="phone" placeholder="+1 234 567 8900">
+          </div>
+          <div class="form-group">
+            <label for="interest">I'm Interested In</label>
+            <select id="interest" name="interest">
+              <option value="">Select a category</option>
+              <option>Figurative Sculpture</option>
+              <option>Animal Sculpture</option>
+              <option>Abstract Work</option>
+              <option>Handcrafts</option>
+              <option>General Enquiry</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="message">Message *</label>
+          <textarea id="message" name="message" placeholder="Tell us what you're looking for, ask about a specific piece, or enquire about shipping to your country..." required></textarea>
+        </div>
+        <!-- honeypot spam protection -->
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="New Enquiry — Mangwanani Art Gallery">
 
-    <!-- Theme JavaScript -->
-    <script src="js/agency.min.js"></script>
+        <button type="submit" class="submit-btn" id="submitBtn">Send Enquiry</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Mangwanani Art Gallery</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+      <a href="https://a.meipian.me/3qi7euc" target="_blank" rel="noopener" aria-label="WeChat"><i class="fa fa-weixin"></i></a>
+      <a href="contact.html" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-credit">
+      Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer">Tafadzwa Muriritirwa</a> &copy; 2026
+    </div>
+  </footer>
+
+  <script>
+    // Mobile nav
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    // Form submission via Formspree (AJAX)
+    const form = document.getElementById('contactForm');
+    const statusEl = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      statusEl.className = 'form-status';
+      statusEl.textContent = '';
+
+      // Basic validation
+      const name = form.name.value.trim();
+      const email = form.email.value.trim();
+      const message = form.message.value.trim();
+      if (!name || !email || !message) {
+        statusEl.textContent = 'Please fill in your name, email and message.';
+        statusEl.classList.add('error');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
+
+      try {
+        const data = new FormData(form);
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (response.ok) {
+          statusEl.textContent = 'Thank you — your message has been sent. We\'ll be in touch within 1–2 business days.';
+          statusEl.classList.add('success');
+          form.reset();
+        } else {
+          throw new Error('Server error');
+        }
+      } catch {
+        statusEl.textContent = 'Something went wrong. Please try reaching us directly on WhatsApp or Facebook.';
+        statusEl.classList.add('error');
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Enquiry';
+      }
+    });
+  </script>
 
 </body>
-
 </html>

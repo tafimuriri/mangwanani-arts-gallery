@@ -1,211 +1,272 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Mangwanani Art Gallery — Authentic Shona sculptures and handcrafted African art from Zimbabwe, sold worldwide.">
+  <title>Mangwanani Art Gallery</title>
+  <link rel="icon" href="./img/header-bg.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mangwanani Art Gallery — Authentic Shona sculptures and handcrafted African art from Zimbabwe.">
-    <meta name="author" content="">
+  <style>
+    :root {
+      --black:    #0d0d0d;
+      --surface:  #141414;
+      --surface2: #1c1c1c;
+      --gold:     #fed136;
+      --gold2:    #f3cd8c;
+      --text:     #e8e0d0;
+      --muted:    #8a8070;
+      --border:   rgba(243,205,140,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    <title>Mangwanani Art Gallery</title>
-    <link rel="icon" href="./img/header-bg.jpg">
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: transparent; transition: background 0.4s, padding 0.4s; }
+    nav.scrolled { background: rgba(13,13,13,0.97); padding: 1rem 4rem; border-bottom: 1px solid var(--border); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--gold); display: block; transition: 0.3s; }
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
+    /* HERO */
+    .hero { position: relative; height: 100vh; min-height: 600px; display: flex; align-items: center; justify-content: center; overflow: hidden; text-align: center; }
+    .hero-bg { position: absolute; inset: 0; background: url('img/header-bg.jpg') center/cover no-repeat; filter: brightness(0.35); transform: scale(1.05); transition: transform 8s ease; }
+    .hero:hover .hero-bg { transform: scale(1.0); }
+    .hero-content { position: relative; z-index: 2; max-width: 760px; padding: 0 2rem; }
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s 0.3s ease both; }
+    .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 7vw, 5.5rem); font-weight: 300; line-height: 1.1; color: #fff; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s 0.5s ease both; }
+    .hero-title em { font-style: italic; color: var(--gold2); }
+    .hero-sub { font-size: 1rem; color: var(--text); opacity: 0; margin-bottom: 2.5rem; animation: fadeUp 1s 0.7s ease both; }
+    .hero-cta { display: inline-flex; gap: 1rem; flex-wrap: wrap; justify-content: center; opacity: 0; animation: fadeUp 1s 0.9s ease both; }
 
-    <!-- Custom Fonts -->
-   <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    .btn-primary { background: var(--gold); color: var(--black); padding: 0.85rem 2.4rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; border: none; cursor: pointer; display: inline-block; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); color: var(--black); }
+    .btn-outline { border: 1px solid var(--gold2); color: var(--gold2); padding: 0.85rem 2.4rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; display: inline-block; transition: background 0.2s, color 0.2s, transform 0.2s; }
+    .btn-outline:hover { background: var(--gold2); color: var(--black); transform: translateY(-2px); }
 
-    <!-- Theme CSS -->
-    <link href="css/agency.css" rel="stylesheet">
-    <link href="css/agency.min.css" rel="stylesheet">
+    .scroll-hint { position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%); z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 0.5rem; opacity: 0; animation: fadeUp 1s 1.4s ease both; }
+    .scroll-hint span { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--muted); }
+    .scroll-line { width: 1px; height: 48px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scrollLine 1.8s ease-in-out infinite; }
+    @keyframes scrollLine { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
+    /* SECTIONS */
+    section { padding: 6rem 4rem; }
+    .section-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.2; color: #fff; margin-bottom: 1.5rem; }
+    .section-title em { font-style: italic; color: var(--gold2); }
+    .divider { width: 48px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+
+    /* STATS */
+    .intro-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 3rem 4rem; display: grid; grid-template-columns: repeat(3, 1fr); }
+    .intro-stat { padding: 1.5rem 2.5rem; border-right: 1px solid var(--border); }
+    .intro-stat:last-child { border-right: none; }
+    .intro-stat-number { font-family: 'Cormorant Garamond', serif; font-size: 3rem; font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.4rem; }
+    .intro-stat-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); }
+
+    /* FEATURED */
+    .featured { background: var(--black); }
+    .featured-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+    .featured-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .art-card { position: relative; overflow: hidden; background: var(--surface); cursor: pointer; }
+    .art-card-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; transition: transform 0.6s ease, filter 0.4s; filter: brightness(0.85); }
+    .art-card:hover .art-card-img { transform: scale(1.06); filter: brightness(1); }
+    .art-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(13,13,13,0.85) 0%, transparent 55%); display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; }
+    .art-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 400; color: #fff; }
+    .art-card-sub { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold2); margin-top: 0.2rem; }
+
+    /* STORY */
+    .story { display: grid; grid-template-columns: 1fr 1fr; }
+    .story-image { position: relative; overflow: hidden; min-height: 520px; }
+    .story-image img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.7) sepia(0.2); transition: filter 0.5s; }
+    .story-image:hover img { filter: brightness(0.85) sepia(0.1); }
+    .story-content { background: var(--surface); padding: 5rem 4.5rem; display: flex; flex-direction: column; justify-content: center; }
+    .story-content p { color: var(--text); margin-bottom: 1.2rem; font-size: 0.97rem; }
+
+    /* CONTACT STRIP */
+    .contact-strip { background: var(--surface2); border-top: 1px solid var(--border); padding: 5rem 4rem; text-align: center; }
+    .contact-strip p { color: var(--muted); margin-bottom: 2.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .contact-methods { display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; margin-top: 3rem; }
+    .contact-method { display: flex; align-items: center; gap: 0.7rem; font-size: 0.85rem; color: var(--text); }
+    .contact-method i { color: var(--gold); font-size: 1.1rem; }
+
+    /* FOOTER */
+    footer { background: #080808; border-top: 1px solid var(--border); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold2); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; transition: border-color 0.2s, color 0.2s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-credit { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-credit a { color: var(--gold2); transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--gold); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      nav.scrolled { padding: 1rem 2rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      section { padding: 4rem 2rem; }
+      .intro-strip { grid-template-columns: 1fr; padding: 2rem; }
+      .intro-stat { border-right: none; border-bottom: 1px solid var(--border); padding: 1.5rem 1rem; }
+      .intro-stat:last-child { border-bottom: none; }
+      .featured-grid { grid-template-columns: 1fr 1fr; }
+      .story { grid-template-columns: 1fr; }
+      .story-image { min-height: 320px; }
+      .story-content { padding: 3rem 2rem; }
+      .contact-strip { padding: 4rem 2rem; }
+      footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .featured-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+<body>
 
-<body> 
-    <!-- id="page-top" class="index" REMOVED THIS-->
- <!-- Navigation bar -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                 <a class="navbar-brand page-scroll" href="#page-top">Mangwanani Art Gallery</a></div>
+  <nav id="mainNav">
+    <a class="nav-brand" href="index.html">Mangwanani Art Gallery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                     <li class="">
-                      <li>
-                        <a href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About Us</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact Us</a>
-                    </li>
-                </ul>
-            </div>     <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </li>
-</ul>
-</div>
-    </nav>
-
-    <!-- Header -->
- <div>
-     <div id="carousel" class="carousel slide" data-ride="carousel">
-
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#carousel" data-slide-to="0" class="active"></li>
-    <li data-target="#carousel" data-slide-to="1"></li>
-    <li data-target="#carousel" data-slide-to="2"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src="img/header-bg.jpg" class="img-responsive" alt=" Image 1" >
-      <div class="carousel-caption">
-        <div class="intro-text">
-                <div class="intro-lead-in">Welcome To Mangwanani Art Gallery</div>
-                <div class="intro-heading">It's Nice To Meet You</div>
-                <a href="about.html" class="page-scroll btn btn-xl">Tell Me More</a>
-                </div>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <p class="hero-eyebrow">Norton, Zimbabwe &mdash; Handcrafted for the World</p>
+      <h1 class="hero-title">Where Stone Becomes <em>Story</em></h1>
+      <p class="hero-sub">Authentic Shona sculptures, abstracts and handcrafts — carved from Zimbabwean serpentine stone and shipped worldwide.</p>
+      <div class="hero-cta">
+        <a href="portfolio.html" class="btn-primary">View Collection</a>
+        <a href="contact.html" class="btn-outline">Enquire Now</a>
       </div>
     </div>
-
-    <div class="item">
-      <img src="img/header-bg2.jpg" class="img-responsive" alt=" Image 2 ">
-      <div class="carousel-caption">
-            <div class="intro-text">
-             <div class="intro-lead-in">African stone sculpture from Zimbabwe are often called  <a href="portfolio.html">Shona sculptures.</a><br>
-             </div>
-            </div>
-     </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
     </div>
+  </section>
 
-    <div class="item">
-      <img src="img/header-bg3.jpg" class="img-responsive" alt=" Image 3">
-      <div class="carousel-caption">
-            <div class="intro-text">
-                <div class="intro-lead-in">
-                <a href="contact.html">Click me</a> to contact us on any of our works that you like.
-                <br>
-                </div>
-            </div>
-        </div>
+  <div class="intro-strip reveal">
+    <div class="intro-stat">
+      <div class="intro-stat-number">1000+</div>
+      <div class="intro-stat-label">Years of Shona sculpting tradition</div>
     </div>
-
+    <div class="intro-stat">
+      <div class="intro-stat-number">Global</div>
+      <div class="intro-stat-label">Shipping worldwide</div>
+    </div>
+    <div class="intro-stat">
+      <div class="intro-stat-number">100%</div>
+      <div class="intro-stat-label">Handcrafted — every piece unique</div>
+    </div>
   </div>
 
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#carousel" data-slide="prev">
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#carousel" data-slide="next">
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-</div>
-<br><br><br>
-<!-- Mid Section -->
-
- <div class="container-fluid">
-             <a href="portfolio.html">
-          <h5 align="center"> Don't Miss to Check our Gallery !!</h5></a>
-
-         <div class="col-md-4">
-         <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/portfolio/gallery2/33.jpg" alt="Half Head">
-            </a>
-        </div>
-        <br>
-         </div>
-    <div class="col-md-4">
-        <div class="timeline-image">
-        <a href="portfolio.html" >
-            <img class="img-rounded img-responsive"  src="img/portfolio/gallery2/3.jpg" alt="newborn-baby" ></a>
-        </div>
-        <br>
+  <section class="featured">
+    <div class="featured-header reveal">
+      <div>
+        <p class="section-label">Our Work</p>
+        <h2 class="section-title">Featured <em>Sculptures</em></h2>
+        <div class="divider"></div>
       </div>
-    <div class="col-md-4">
-          <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/portfolio/gallery2/44.jpg" alt=" Zimbabwean Fish Eagle">
-          </a>
-          </div>
-          <br>
-          </div>
-        </div>
-        <br> <br>
+      <a href="portfolio.html" class="btn-outline" style="margin-bottom:1.5rem;">See Full Gallery &rarr;</a>
     </div>
-    </nav>
-
- <footer>
- <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                       <li><a href="contact.html">Feedback Us / Enquiries</a>
-                        </li>
-                    </ul>
-                    <span class="copyright">Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Tafadzwa Muriritirwa</a> &copy; 2025</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/?ref=br_rs"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="https://a.meipian.me/3qi7euc"><i class="fa fa-weixin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                        <li>Headquarters address: 4015 Nharira View Norton Zimbabwe</li>
-                       
-                    </ul>
-                </div>
-            </div>
+    <div class="featured-grid">
+      <div class="art-card reveal">
+        <img class="art-card-img" src="img/portfolio/gallery2/33.jpg" alt="Shona Sculpture">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Shona Sculpture</div>
+          <div class="art-card-sub">Serpentine Stone</div>
         </div>
-    </footer>
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+      </div>
+      <div class="art-card reveal" style="transition-delay:0.15s">
+        <img class="art-card-img" src="img/portfolio/gallery2/3.jpg" alt="Abstract Piece">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Abstract Form</div>
+          <div class="art-card-sub">Hand Carved</div>
+        </div>
+      </div>
+      <div class="art-card reveal" style="transition-delay:0.3s">
+        <img class="art-card-img" src="img/portfolio/gallery2/44.jpg" alt="Zimbabwean Art">
+        <div class="art-card-overlay">
+          <div class="art-card-title">Zimbabwean Art</div>
+          <div class="art-card-sub">Gallery Collection</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <div class="story">
+    <div class="story-image reveal">
+      <img src="img/portfolio/girl sculpture.jpg" alt="Artist at work">
+    </div>
+    <div class="story-content reveal">
+      <p class="section-label">Our Story</p>
+      <h2 class="section-title">Carved from the <em>Heart</em> of Zimbabwe</h2>
+      <div class="divider"></div>
+      <p>Zimbabwe — derived from the Shona word <em>"dzimbadzamabwe"</em>, meaning 'house of stone' — is the only country in Africa with large stone deposits suitable for sculpting. The Shona people have been transforming this stone into art for nearly a thousand years.</p>
+      <p>Each piece from Mangwanani Art Gallery carries that heritage forward. Carved from serpentine stone in colours ranging from deep black and forest green to warm ochre and purple — no two sculptures are alike.</p>
+      <a href="about.html" class="btn-outline" style="margin-top:1.5rem;">Our Full Story &rarr;</a>
+    </div>
+  </div>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <div class="contact-strip reveal">
+    <p class="section-label">Get In Touch</p>
+    <h2 class="section-title">Interested in a <em>Piece?</em></h2>
+    <p>Whether buying a gift, decorating a space, or building a collection — we'd love to hear from you. We ship worldwide.</p>
+    <a href="contact.html" class="btn-primary">Send an Enquiry</a>
+    <div class="contact-methods">
+      <div class="contact-method"><i class="fa fa-whatsapp"></i> +263 772 494 464</div>
+      <div class="contact-method"><i class="fa fa-weixin"></i> +86 159 4063 9461</div>
+      <div class="contact-method"><i class="fa fa-facebook"></i>
+        <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" style="color:var(--text)">Mangwanani Art Gallery</a>
+      </div>
+    </div>
+  </div>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+  <footer>
+    <div class="footer-brand">Mangwanani Art Gallery</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+      <a href="https://a.meipian.me/3qi7euc" target="_blank" rel="noopener" aria-label="WeChat"><i class="fa fa-weixin"></i></a>
+      <a href="contact.html" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-credit">
+      Built by <a href="https://www.linkedin.com/in/
+      dzwa-muriritirwa/" target="_blank" rel="noopener noreferrer">Tafadzwa Muriritirwa</a> &copy; 2026
+    </div>
+  </footer>
 
-    <!-- Theme JavaScript -->
-    <script src="js/agency.min.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+    });
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
 </body>
-
 </html>

@@ -1,247 +1,270 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="About Mangwanani Art Gallery — the story of Shona sculpture, Zimbabwe's stone heritage, and the artists behind the work.">
+  <title>About — Mangwanani Art Gallery</title>
+  <link rel="icon" href="./img/header-bg.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="About Mangwanani Art Gallery — learn about our Shona sculptures and the artists behind the work.">
-    <meta name="author" content="">
+  <style>
+    :root {
+      --black:   #0d0d0d;
+      --surface: #141414;
+      --surface2:#1c1c1c;
+      --gold:    #fed136;
+      --gold2:   #f3cd8c;
+      --text:    #e8e0d0;
+      --muted:   #8a8070;
+      --border:  rgba(243,205,140,0.15);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    <title>About Mangwanani Arts </title>
-    <link rel="icon" href="./img/header-bg.jpg">
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(13,13,13,0.97); border-bottom: 1px solid var(--border); transition: padding 0.4s; }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--gold); display: block; }
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    /* PAGE HERO */
+    .page-hero { padding: 9rem 4rem 5rem; background: var(--surface); border-bottom: 1px solid var(--border); position: relative; overflow: hidden; }
+    .page-hero::before { content: ''; position: absolute; right: -80px; top: -80px; width: 400px; height: 400px; border: 1px solid var(--border); border-radius: 50%; opacity: 0.4; }
+    .page-hero::after { content: ''; position: absolute; right: 40px; top: 40px; width: 260px; height: 260px; border: 1px solid var(--border); border-radius: 50%; opacity: 0.2; }
+    .page-hero-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 300; color: #fff; line-height: 1.1; max-width: 700px; }
+    .page-hero-title em { font-style: italic; color: var(--gold2); }
+    .page-hero-sub { margin-top: 1.5rem; max-width: 560px; color: var(--muted); font-size: 0.97rem; }
 
-    <!-- Theme CSS -->
-   
-    <link href="css/custom.css" rel="stylesheet">
-    
+    /* SHARED */
+    .section-label { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 300; color: #fff; line-height: 1.2; margin-bottom: 1rem; }
+    .section-title em { font-style: italic; color: var(--gold2); }
+    .divider { width: 48px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+    .btn-outline { border: 1px solid var(--gold2); color: var(--gold2); padding: 0.85rem 2.4rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; display: inline-block; transition: background 0.2s, color 0.2s, transform 0.2s; }
+    .btn-outline:hover { background: var(--gold2); color: var(--black); transform: translateY(-2px); }
+    .btn-primary { background: var(--gold); color: var(--black); padding: 0.85rem 2.4rem; font-family: 'Jost', sans-serif; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; display: inline-block; transition: background 0.2s, transform 0.2s; border: none; cursor: pointer; }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); color: var(--black); }
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    /* WHAT WE DO */
+    .what-we-do { padding: 6rem 4rem; background: var(--black); display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .what-we-do-text p { color: var(--text); margin-bottom: 1.2rem; font-size: 0.97rem; }
+    .what-we-do-image { position: relative; }
+    .what-we-do-image img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: brightness(0.8); }
+    .what-we-do-image::before { content: ''; position: absolute; top: -16px; left: -16px; right: 16px; bottom: 16px; border: 1px solid var(--border); z-index: -1; }
 
+    /* SHONA HISTORY */
+    .history { background: var(--surface); padding: 6rem 4rem; }
+    .history-inner { max-width: 860px; margin: 0 auto; }
+    .history-inner p { color: var(--text); margin-bottom: 1.4rem; font-size: 0.97rem; }
+    .history-inner blockquote { border-left: 2px solid var(--gold); padding: 1rem 0 1rem 2rem; margin: 2.5rem 0; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-style: italic; color: var(--gold2); line-height: 1.4; }
+
+    /* SCULPTURE TYPES */
+    .types { padding: 6rem 4rem; background: var(--black); }
+    .types-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; }
+    .type-card { background: var(--surface); border: 1px solid var(--border); overflow: hidden; transition: border-color 0.3s; }
+    .type-card:hover { border-color: var(--gold2); }
+    .type-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; filter: brightness(0.8); transition: filter 0.4s, transform 0.5s; }
+    .type-card:hover img { filter: brightness(1); transform: scale(1.04); }
+    .type-card-body { padding: 1.4rem; }
+    .type-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #fff; margin-bottom: 0.4rem; }
+    .type-card-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.6; }
+
+    /* PROCESS */
+    .process { background: var(--surface2); padding: 6rem 4rem; border-top: 1px solid var(--border); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+    .process-step { padding: 2rem 1.5rem; border-top: 1px solid var(--border); }
+    .process-step-number { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; color: var(--border); font-weight: 300; line-height: 1; margin-bottom: 1rem; }
+    .process-step-title { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold2); margin-bottom: 0.6rem; }
+    .process-step-desc { font-size: 0.85rem; color: var(--muted); }
+
+    /* CTA */
+    .cta-strip { background: var(--black); border-top: 1px solid var(--border); padding: 5rem 4rem; text-align: center; }
+    .cta-strip p { color: var(--muted); max-width: 480px; margin: 1rem auto 2.5rem; }
+
+    /* FOOTER */
+    footer { background: #080808; border-top: 1px solid var(--border); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold2); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.85rem; transition: border-color 0.2s, color 0.2s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-credit { font-size: 0.72rem; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-credit a { color: var(--gold2); transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(32px); transition: opacity 0.8s ease, transform 0.8s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .page-hero { padding: 7rem 2rem 4rem; }
+      .what-we-do { grid-template-columns: 1fr; padding: 4rem 2rem; gap: 3rem; }
+      .history { padding: 4rem 2rem; }
+      .types { padding: 4rem 2rem; }
+      .types-grid { grid-template-columns: 1fr 1fr; }
+      .process { padding: 4rem 2rem; }
+      .process-steps { grid-template-columns: 1fr 1fr; }
+      .cta-strip { padding: 4rem 2rem; }
+      footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
+    }
+    @media (max-width: 540px) {
+      .types-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
+<body>
 
-  <body>
-<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                 <a class="navbar-brand page-scroll" href="index.html">Mangwanani Art Gallery</a></div>
+  <nav id="mainNav">
+    <a class="nav-brand" href="index.html">Mangwanani Art Gallery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="portfolio.html">Portfolio</a></li>
+      <li><a href="about.html" class="active">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="index.html"></a>
-                    </li>
-                     <li>
-                        <a href="index.html">Home</a>
-                      <li>
-                        <a href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact Us</a>
-                    </li>
-                </ul>
-            </div>     <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </li>
-</ul>
-</div>
- </nav>
-
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron" class="container-fluid">
-        <div id="text">
-        <div id="header-text">Mangwanani Art Gallery </div>
-        <p>We are a company based in Zimbabwe that makes <br>ABSTRACTS, SCULPTURES, HANDCRAFTS other hand made african products <br> and sell them to different parts of the world</p>
-      </div>
-    </div>
-
-<div id="intro" >
-   <div class="container">
-        <h1 align="center"> Shona Sculptures</h1>
-      <p>These African stone sculptures are known as Shona sculpture or Zimbabwe Shona sculpture because they are hand carved by the Shona people of Zimbabwe. The Shona people of Zimbabwe have been hand sculpting stone into works of art for nearly a thousand years. <br> Even though the craft is ancient, the style has continually evolved and the carvings created today are both beautiful and elegant.  The contemporary, yet eternal, shape of these sculptures bring splendor to the home and compliments any decor.  The themes these sculptures portray represent  esteemed values in the Shona culture of family, love, life and nature.
-      </p>
-    </div>
-     <br><br>
-  <div class="container-fluid">
-          <div class="col-md-4">
-           <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/portfolio/gallery1/half-head.jpg" alt="Half Head">
-            </a>
-        <figcaption> <h5>Half Head </h5></figcaption>
-          <p>Here at Mangwanani Art Gallery we work on different kinds of sculptures as shown in the above images. </p>
-        </div>
-         </div>
-    <div class="col-md-4">
-          <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive"  src="img/portfolio/gallery2/newborn-baby.jpg" alt="newborn-baby" >
-          </a>
-          <figcaption> <h5>New Born Baby </h5> </figcaption>
-          <p>This is one of many people ' s favourite piece of art work as it symbolise the importance women in Zimbabwe as a country and in the world.</p>
-        </div>
-      </div>
-    <div class="col-md-4">
-          <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/portfolio/gallery2/wooden-eagle2.jpg" alt=" Zimbabwean Fish Eagle">
-          </a>
-       <figcaption> <h5>Zimbabwean Fish Eagle </h5> </figcaption>
-          <p>if you have noticed the zimbabwean national flag you will find this eagle as it was believed of great siginificance in the Shona</p>
-          </div>
-          </div>
-        </div>
-        <br> <br>
-    <div class="container">
-      <p> The stone is serpentine and can be found in Zimbabwe with  colors ranging from black and green to yellows, orange, grey, red, and even purple. Each piece is unique, both in the expression made by the sculptor's hands and in the natural patterns in the rock formed millions of years ago. 
-     These beautiful pieces of Shona art can be used in the home, garden, or office. <br> Many of these stone sculptures make wonderful gifts for many occassions, including weddings, engagements, and anniversaries. African Import Art offers free ground shipping for all stone sculptures less than 10 lbs. in the USA.</p>
-      </div>
-    </div>
-    </div>
-    </div>
-  <div id="mid-info">
-    <h1 align="center"> How it all comes about</h1>
-    <div class="row">
-    <div class="col-md-4" align="center">
-        <img height="450px" src="img/portfolio/girl sculpture.jpg" alt="Man sculpting">
-        <h4><p> An artist working on a Sculpture</p></h4>
-      </div>
-      <div class="col-md-4">
-  <p>African stone sculpture from Zimbabwe is often called Shona sculpture, named after the largest tribe engaged in sculpting."Zimbabwe"derived from the Shona word "dzimbadzamabwe" which means 'house of stone' is the only country on the African continent that has large deposits of stone suitable for sculpting.</p>
-    <br>
-    In ancient times stone was used extensively for building and for decorative purposes. The Great Zimbabwe settlement, now a World Heritage Site, is testimony to the skill and artistry of the ancestors of today's sculptors. Built between the 11th and 15th centuries, at a time when Europe was just emerging from the Dark Ages, these accomplished stone masons used hand-hewn granite blocks to painstakingly and precisely build ornate towers and enclosures – all free of mortar. Parts of the settlement combine natural rock formation and dry stone construction – the two blending aesthetically and functionally.
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <p class="page-hero-label">Our Story</p>
+    <h1 class="page-hero-title">Art Carved From <em>Thousand-Year</em> Tradition</h1>
+    <p class="page-hero-sub">Mangwanani Art Gallery brings the ancient craft of Shona stone sculpture to the world — handmade in Zimbabwe, one piece at a time.</p>
   </div>
-    <div class="col-md-4" align="center">
-        <img height="450px" src="img/portfolio/gallery1/rings.jpg" alt="Man sculpting">
-        <h4><p> Some of our work</p></h4>
-      </div>
-</div>
-  </div>
-  <br>
-</div>
- <div id="intro" >
-      <h1 align="center"> Some uses of our sculptures</h1>
-    <p>These African stone sculptures are known as Shona sculpture or Zimbabwe Shona sculpture because they are hand carved by the Shona of Zimbabwe. The Shona people of Zimbabwe have been hand sculpting stone into works of art for nearly a thousand years. <br> Even though the craft is ancient, the style has continually evolved and the carvings created today are both beautiful and elegant.  The contemporary, yet eternal, shape of these sculptures bring splendor to the home and compliments any decor.  The themes these sculptures portray represent  esteemed values in the Shona culture of family, love, life and nature.
-    </p>
-        <div class="container-fluid">
-        <div class="col-md-4">
-           <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/about/02.jpg" alt="Rhino">
-          </a>
-          <figcaption> <h5>Rhino Sculpture </h5> </figcaption>
-          <p>Here at the Herberts we work on different kinds of sculptures as shown in the image is an abstrcat sculpture just to show our abstract works. </p>
-        </div>
-      </div>
-        <div class="col-md-4">
-          <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive"  src="img/about/01.jpg" alt="Insde house" >
-          </a>
-          <figcaption> <h5>Book Stand </h5> </figcaption>
-          <p>This is one of many people ' s favourite piece of art work as it symbolise the importance women in Zimbabwe as a country and in the world.</p>
-        
-       </div>
-     </div>
-        <div class="col-md-4">
-          <div class="timeline-image">
-            <a href="portfolio.html" >
-            <img class="img-rounded img-responsive" src="img/about/03.jpg" alt="">
-          </a>
-         <figcaption> <h5>Zimbabwean Lady </h5> </figcaption>
-          <p>I guess as one of the famous english sayings out there it was really the most inspiration to the artist for this fine piece of artwork...</p>
-        </div>
-      </div>
+
+  <!-- WHAT WE DO -->
+  <div class="what-we-do">
+    <div class="what-we-do-text reveal">
+      <p class="section-label">What We Do</p>
+      <h2 class="section-title">Abstracts, Sculptures &amp; <em>Handcrafts</em></h2>
+      <div class="divider"></div>
+      <p>We are a gallery based in Norton, Zimbabwe, creating and selling authentic African art — Shona stone sculptures, abstract works, handcrafts, and other handmade African products — to buyers across the world.</p>
+      <p>Every piece is made by hand by skilled Zimbabwean artists. No factory production, no shortcuts. The work you receive carries the fingerprints of the person who made it.</p>
+      <a href="portfolio.html" class="btn-outline" style="margin-top:1rem;">Browse the Collection &rarr;</a>
     </div>
-      <p> The stone is serpentine and can be found in Zimbabwe with  colors ranging from black and green to yellows, orange, grey, red, and even purple. Each piece is unique, both in the expression made by the sculptor's hands and in the natural patterns in the rock formed millions of years ago. 
-     These beautiful pieces of Shona art can be used in the home, garden, or office. <br> Many of these stone sculptures make wonderful gifts for many occassions, including weddings, engagements, and anniversaries. African Import Art offers free ground shipping for all stone sculptures less than 10 lbs. in the USA.</p>
-      </div>
-  <div id="intro">
-  <div class="container-fluid">
-    <h1 align="center"> History and Culture of Sculptures</h1>
-    <div class="col-md-9">
-    <p>African stone sculpture from Zimbabwe is often called Shona sculpture, named after the largest tribe engaged in sculpting. Zimbabwe – derived from the Shona word "dzimbadzamabwe" which means 'house of stone' – is the only country on the African continent that has large deposits of stone suitable for sculpting.</p><br>In ancient times stone was used extensively for building and for decorative purposes. The Great Zimbabwe settlement, now a World Heritage Site, is testimony to the skill and artistry of the ancestors of today's sculptors. Built between the 11th and 15th centuries, at a time when Europe was just emerging from the Dark Ages, these accomplished stone masons used hand-hewn granite blocks to painstakingly and precisely build ornate towers and enclosures – all free of mortar. Parts of the settlement combine natural rock formation and dry stone construction – the two blending aesthetically and functionally.
-    <br> <br>
-  </div>
-    <div class="col-md-2">
-       <img  src="img/gz1.jpg" alt="">
+    <div class="what-we-do-image reveal">
+      <img src="img/portfolio/girl sculpture.jpg" alt="Artist working on a sculpture">
     </div>
   </div>
- </div>
+
+  <!-- HISTORY -->
+  <div class="history">
+    <div class="history-inner reveal">
+      <p class="section-label">Heritage</p>
+      <h2 class="section-title">The Story of <em>Shona Sculpture</em></h2>
+      <div class="divider"></div>
+      <blockquote>"Zimbabwe" — from the Shona word <em>dzimbadzamabwe</em>, meaning 'house of stone.'</blockquote>
+      <p>Zimbabwe is the only country on the African continent with large deposits of serpentine stone suitable for sculpting. The Shona people have been hand-carving this stone into art for nearly a thousand years — long before the craft gained international recognition.</p>
+      <p>The stone comes in a remarkable range of colours: deep black, forest green, warm yellows and oranges, grey, red, and even purple. Each piece is shaped by hand, making every sculpture entirely unique — both in the sculptor's expression and in the natural patterns formed in the rock millions of years ago.</p>
+      <p>The Great Zimbabwe settlement — now a UNESCO World Heritage Site — stands as testament to these ancestors' mastery. Built between the 11th and 15th centuries, its towers and enclosures were constructed without a single drop of mortar, using hand-hewn granite blocks fitted together with extraordinary precision.</p>
+      <p>Today's sculptors at Mangwanani Art Gallery carry that same spirit forward. The themes they sculpt — family, love, life, nature, and the animals of Zimbabwe — reflect the enduring values of Shona culture.</p>
     </div>
- <footer>
- <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                   <li><i class="fa fa-whatsapp" > +263772494464 </i></li>
-                   <br>
-                   <li><i class="fa fa-weixin" > +8615940639461 </i></li><br>
-                        <li><a href="contact.html">Leave us a message </a>
-                        </li>
-                    </ul>
-                    <br>
-                    <span class="copyright">Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Tafadzwa Muriritirwa</a> &copy; 2025</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/?ref=br_rs"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="https://a.meipian.me/3qi7euc"><i class="fa fa-weixin"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-whatsapp"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                        <li>Headquarters address: 4015 Nharira View Norton Zimbabwe</li>
-                        <li><a href="contact.html">Feedback Us / Enquiries</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+  </div>
+
+  <!-- SCULPTURE TYPES -->
+  <div class="types">
+    <div class="reveal">
+      <p class="section-label">Our Work</p>
+      <h2 class="section-title">Types of <em>Sculpture</em></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="types-grid">
+      <div class="type-card reveal">
+        <img src="img/portfolio/gallery1/half-head.jpg" alt="Half Head sculpture">
+        <div class="type-card-body">
+          <div class="type-card-title">Figurative Sculptures</div>
+          <div class="type-card-desc">Human forms — faces, couples, mothers, children — expressing the relationships and emotions at the heart of Shona culture.</div>
         </div>
-    </footer>
-    <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
+      </div>
+      <div class="type-card reveal" style="transition-delay:0.15s">
+        <img src="img/portfolio/gallery1/impala.jpg" alt="Impala sculpture">
+        <div class="type-card-body">
+          <div class="type-card-title">Animal Sculptures</div>
+          <div class="type-card-desc">Zimbabwe's wildlife captured in stone — eagles, impala, owls and more. The Zimbabwean fish eagle holds deep national significance.</div>
+        </div>
+      </div>
+      <div class="type-card reveal" style="transition-delay:0.3s">
+        <img src="img/portfolio/gallery1/rings.jpg" alt="Abstract sculpture">
+        <div class="type-card-body">
+          <div class="type-card-title">Abstracts &amp; Handcrafts</div>
+          <div class="type-card-desc">Modern abstract forms and handmade African crafts — each piece a conversation between ancient technique and contemporary expression.</div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <!-- PROCESS -->
+  <div class="process reveal">
+    <p class="section-label">How It's Made</p>
+    <h2 class="section-title">From Rock to <em>Art</em></h2>
+    <div class="divider"></div>
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="process-step-number">01</div>
+        <div class="process-step-title">Stone Selection</div>
+        <div class="process-step-desc">Serpentine stone is carefully selected from Zimbabwe's deposits — each stone chosen for its colour, grain and size.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">02</div>
+        <div class="process-step-title">Hand Carving</div>
+        <div class="process-step-desc">Artists shape the stone entirely by hand using chisels and grinders, working with the natural patterns in the rock.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">03</div>
+        <div class="process-step-title">Finishing</div>
+        <div class="process-step-desc">Pieces are smoothed, polished and finished to bring out the natural colour and lustre of the serpentine stone.</div>
+      </div>
+      <div class="process-step">
+        <div class="process-step-number">04</div>
+        <div class="process-step-title">Worldwide Shipping</div>
+        <div class="process-step-desc">Finished pieces are carefully packed and shipped to buyers across the world — each one a unique piece of Zimbabwe.</div>
+      </div>
+    </div>
+  </div>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <!-- CTA -->
+  <div class="cta-strip reveal">
+    <p class="section-label">Own a Piece</p>
+    <h2 class="section-title" style="margin-bottom:0">Ready to Enquire?</h2>
+    <p>Contact us about any sculpture you've seen — or describe what you're looking for and we'll help you find the right piece.</p>
+    <a href="contact.html" class="btn-primary">Get In Touch</a>
+  </div>
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+  <footer>
+    <div class="footer-brand">Mangwanani Art Gallery</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+      <a href="https://a.meipian.me/3qi7euc" target="_blank" rel="noopener" aria-label="WeChat"><i class="fa fa-weixin"></i></a>
+      <a href="contact.html" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-credit">
+      Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer">Tafadzwa Muriritirwa</a> &copy; 2026
+    </div>
+  </footer>
 
-    <!-- Theme JavaScript -->
-    <script src="js/agency.min.js"></script>
+  <script>
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
 
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-  </body>
+</body>
 </html>
