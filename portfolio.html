@@ -1,198 +1,433 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse the Mangwanani Art Gallery collection — authentic Shona stone sculptures and African handcrafts from Zimbabwe, available worldwide.">
+  <meta name="keywords" content="Shona sculpture, Zimbabwe art, African sculpture, stone carving, handcraft, Mangwanani">
+  <title>Portfolio — Mangwanani Art Gallery</title>
+  <link rel="icon" href="./img/header-bg.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Mangwanani Art Gallery portfolio — browse our collection of authentic Shona stone sculptures and African handcrafts.">
-    <meta name="author" content="">
+  <style>
+    :root {
+      --black:   #0d0d0d;
+      --surface: #141414;
+      --gold:    #fed136;
+      --gold2:   #f3cd8c;
+      --text:    #e8e0d0;
+      --muted:   #8a8070;
+      --border:  rgba(243,205,140,0.15);
+    }
 
-    <title>Mangwanani Arts Gallery</title>
-    <link rel="icon" href="./img/header-bg.jpg">
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--text); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
 
-    <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(13,13,13,0.97); border-bottom: 1px solid var(--border); }
+    .nav-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; letter-spacing: 0.08em; color: var(--gold); }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text); transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+    .nav-toggle { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 0; }
+    .nav-toggle span { width: 24px; height: 2px; background: var(--gold); display: block; }
 
-    <!-- Gallery effects CSS -->
-    <link rel="stylesheet" href="css/lightbox.min.css">
-    <!-- FIX: changed http:// to https:// to prevent mixed-content browser block -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    .page-hero { padding: 9rem 4rem 4rem; background: var(--surface); border-bottom: 1px solid var(--border); }
+    .page-hero-label { font-size: 0.75rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; }
+    .page-hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; color: #fff; line-height: 1.1; }
+    .page-hero-title em { font-style: italic; color: var(--gold2); }
+    .page-hero-sub { margin-top: 1.2rem; max-width: 580px; color: var(--muted); font-size: 1.05rem; }
 
-    <!-- Custom CSS -->
-     <link href="css/bootstrap.min.css" rel="stylesheet">
-     <link href="css/agency.css" rel="stylesheet">
-     <link href="css/agency.min.css" rel="stylesheet">
-    <link href="css/portfolio.css" rel="stylesheet" type="text/css">
-    
+    .gallery-section { padding: 4rem; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .art-card {
+      position: relative;
+      overflow: hidden;
+      background: var(--surface);
+      cursor: zoom-in;
+      border: 1px solid transparent;
+      transition: border-color 0.3s;
+    }
+    .art-card:hover { border-color: var(--border); }
+
+    .art-card img {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+      filter: brightness(0.82);
+      transition: transform 0.55s ease, filter 0.4s;
+      display: block;
+    }
+    .art-card:hover img { transform: scale(1.05); filter: brightness(1); }
+
+    .art-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(13,13,13,0.88) 0%, transparent 50%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+
+    .art-card-zoom {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 36px; height: 36px;
+      border: 1px solid rgba(254,209,54,0.5);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: var(--gold);
+      font-size: 0.8rem;
+    }
+    .art-card:hover .art-card-zoom { opacity: 1; }
+
+    .art-card-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: #fff; line-height: 1.2; }
+    .art-card-sub { font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold2); margin-top: 0.3rem; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.94);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 80vw;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .lightbox-img {
+      max-height: 78vh;
+      max-width: 80vw;
+      object-fit: contain;
+      display: block;
+    }
+
+    .lightbox-caption {
+      margin-top: 1.2rem;
+      text-align: center;
+    }
+    .lightbox-caption-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #fff; }
+    .lightbox-caption-sub { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold2); margin-top: 0.2rem; }
+
+    .lightbox-close {
+      position: fixed; top: 1.5rem; right: 2rem;
+      font-size: 1rem; color: var(--muted); cursor: pointer;
+      background: none; border: none; letter-spacing: 0.1em;
+      text-transform: uppercase; font-family: 'Jost', sans-serif;
+      transition: color 0.2s;
+    }
+    .lightbox-close:hover { color: var(--gold); }
+
+    .lightbox-nav {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      background: none; border: 1px solid var(--border);
+      color: var(--gold2); font-size: 1rem;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; transition: border-color 0.2s, color 0.2s;
+    }
+    .lightbox-nav:hover { border-color: var(--gold); color: var(--gold); }
+    .lightbox-prev { left: 2rem; }
+    .lightbox-next { right: 2rem; }
+
+    .cta-strip { background: var(--surface); border-top: 1px solid var(--border); padding: 4rem; text-align: center; }
+    .cta-strip h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: #fff; margin-bottom: 0.8rem; }
+    .cta-strip h2 em { font-style: italic; color: var(--gold2); }
+    .cta-strip p { color: var(--muted); font-size: 1rem; max-width: 480px; margin: 0 auto 2rem; }
+    .btn-primary { background: var(--gold); color: var(--black); padding: 0.95rem 2.6rem; font-family: 'Jost', sans-serif; font-size: 0.85rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; display: inline-block; border: none; cursor: pointer; transition: background 0.2s, transform 0.2s; }
+    .btn-primary:hover { background: var(--gold2); transform: translateY(-2px); color: var(--black); }
+
+    footer { background: #080808; border-top: 1px solid var(--border); padding: 2.5rem 4rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold2); letter-spacing: 0.06em; }
+    .footer-social { display: flex; gap: 1rem; }
+    .footer-social a { width: 36px; height: 36px; border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 0.9rem; transition: border-color 0.2s, color 0.2s; }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-credit { font-size: 0.78rem; letter-spacing: 0.1em; color: var(--muted); }
+    .footer-credit a { color: var(--gold2); transition: color 0.2s; }
+    .footer-credit a:hover { color: var(--gold); }
+
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 1024px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 1.5rem 2rem; gap: 1.2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .page-hero { padding: 7rem 2rem 3rem; }
+      .gallery-section { padding: 3rem 2rem; }
+      .cta-strip { padding: 4rem 2rem; }
+      footer { padding: 2rem; flex-direction: column; align-items: flex-start; }
+      .lightbox-prev { left: 0.5rem; }
+      .lightbox-next { right: 0.5rem; }
+      .lightbox-inner { max-width: 95vw; }
+      .lightbox-img { max-width: 95vw; }
+    }
+    @media (max-width: 540px) { .gallery-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
-
 <body>
- <!-- Navigation bar -->
-        <nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header page-scroll">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
-                    </button>
-                 <a class="navbar-brand page-scroll" href="index.html"> Mangwanani Art Gallery</a></div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="hidden">
-                        <a href="#page-top"></a>
-                    </li>
-                      <li>
-                        <a href="index.html">Home</a>
-                      </li>
-                      <li>
-                        <a href="portfolio.html">Portfolio</a>
-                    </li>
-                    <li>
-                        <a href="about.html">About Us</a>
-                    </li>
-                    <li>
-                        <a href="contact.html">Contact Us</a>
-                    </li>
-                </ul>
-            </div>     <!-- /.navbar-collapse -->
-        </div>
-        <!-- /.container-fluid -->
-    </nav>
-    <br><br><br><br>
+  <nav>
+    <a class="nav-brand" href="index.html">Mangwanani Art Gallery</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="portfolio.html" class="active">Portfolio</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-    <div id="mid-info">
-  <div class="container">
-    <h1 align="center"> Gallery</h1>
-    <br><br>
-    <p>Your welcome to leave us with a message in our contact page on any particular sculpture that you maybe interested in buying or maybe knowing more about that type of stone used</p>
-    <br>
+  <div class="page-hero">
+    <p class="page-hero-label">The Collection</p>
+    <h1 class="page-hero-title">Sculptures &amp; <em>Handcrafts</em></h1>
+    <p class="page-hero-sub">Each piece is hand-carved from Zimbabwean serpentine stone. Click any sculpture to view it in full detail. Enquire via the contact page for pricing and shipping.</p>
   </div>
-  </div>
-        <!-- Gallery Photos -->  
-    <div id="wrapper" class="container-fluid">
-        <div id="content" class="container-fluid">
-            <ul>
-                <li><a id="lightbox-img" href="img/portfolio/gallery1/half-head.jpg"  data-lightbox="example-set" data-title="first pic">
-                    <img src="img/portfolio/gallery1/half-head.jpg" alt="Half Head" title="Half Head"> </a></li>
 
-                 <li><a  href="img/portfolio/gallery1/owl.jpg" data-lightbox="example-set" data-title="Wise Owl">
-                    <img src="img/portfolio/gallery1/owl.jpg" alt="Wise Owl" title="Wise Owl"> </a></li>
+  <section class="gallery-section">
+    <div class="gallery-grid" id="gallery">
 
-                  <li><a  href="img/portfolio/gallery1/skipping-girl.jpg" data-lightbox="example-set" data-title="Girl with skipping rope">
-                    <img src="img/portfolio/gallery1/skipping-girl.jpg" alt="Skipping Girl" title="Skipping Girl"> </a></li>
-
-                   <li><a href="img/portfolio/gallery1/old-man.jpg" data-lightbox="example-set"  data-title="Old man with white hat">
-                    <img src="img/portfolio/gallery1/old-man.jpg" alt="Old Man" title="Old Man"> </a></li>
-
-                    <li><a href="img/portfolio/gallery1/just-wed.jpg" data-lightbox="example-set" data-title="New Couple">
-                        <img src="img/portfolio/gallery1/just-wed.jpg" alt="New Couple" title="New Couple"> </a></li>
-
-                     <li><a href="img/portfolio/gallery1/guitar.jpg" data-lightbox="example-set" data-title="Music Guitar"> 
-                        <img src="img/portfolio/gallery1/guitar.jpg" alt="Music Guitar" title="Guitar"> </a></li>
-
-                     <li><a href="img/portfolio/gallery1/soccer-kid.jpg" data-lightbox="example-set" data-title="Soccer Player">
-                      <img src="img/portfolio/gallery1/soccer-kid.jpg" alt="Soccer Player" title="Soccer Player"> </a></li>
-
-                      <li><a href="img/portfolio/gallery1/womb.jpg" data-lightbox="example-set" data-title="In the womb"> 
-                    <img src="img/portfolio/gallery1/womb.jpg" alt="In the womb" title="In the womb"> </a></li> 
-
-                      <li><a href="img/portfolio/gallery1/couple-kiss.jpg" data-lightbox="example-set" data-title="Kissing Couple">
-                        <img src="img/portfolio/gallery1/couple-kiss.jpg" alt="Kissing Couple" title="Kissing Couple"> </a></li>
-
-
-                    <li><a href="img/portfolio/gallery1/2.jpg" data-lightbox="example-set" data-title="Hands Together">
-                    <img src="img/portfolio/gallery1/2.jpg" alt="Hands Together" title="Hands Together"> </a></li> 
-
-                    <li><a href="img/portfolio/gallery1/one-eye.jpg" data-lightbox="example-set" data-title="second pic"> <img src="img/portfolio/gallery1/one-eye.jpg" alt="pic5" title="BigFoot"> </a></li>
-
-                    <li><a href="img/portfolio/gallery1/brown-bird.jpg" data-lightbox="example-set" data-title="Small Bird"><img src="img/portfolio/gallery1/brown-bird.jpg" alt="Small Bird" title="Zimbabwean Bird"> </a></li>
-                   
-                    <li><a href="img/portfolio/gallery1/impala.jpg" data-lightbox="example-set" data-title="Impala"> 
-                    <img src="img/portfolio/gallery1/impala.jpg" alt="Impala" title="Impala"> </a></li>
-
-                    <li><a  href="img/portfolio/gallery1/38.jpg"  data-lightbox="example-set" data-title="Big Face"> <img src="img/portfolio/gallery1/38.jpg" alt="Big Face" title="Big Face"> </a></li>
-
-                    <li><a  href="img/portfolio/gallery1/rings.jpg"  data-lightbox="example-set" data-title="Rings"> <img src="img/portfolio/gallery1/rings.jpg" alt="Rings" title="Rings"> </a></li>
-     
-            </ul>
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/half-head.jpg" data-title="Half Head" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/half-head.jpg" alt="Half Head Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Half Head</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
         </div>
-<nav aria-label="...">
-  <ul class="pager">
-    <li><a href="#">Previous</a></li>
-    <li><a href="#">Next</a></li>
-  </ul>
-</nav>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/owl.jpg" data-title="Wise Owl" data-type="Animal · Hand Carved">
+        <img src="img/portfolio/gallery1/owl.jpg" alt="Wise Owl Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Wise Owl</div>
+          <div class="art-card-sub">Animal · Hand Carved</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/skipping-girl.jpg" data-title="Skipping Girl" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/skipping-girl.jpg" alt="Skipping Girl Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Skipping Girl</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/old-man.jpg" data-title="Old Man" data-type="Figurative · Hand Carved">
+        <img src="img/portfolio/gallery1/old-man.jpg" alt="Old Man Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Old Man</div>
+          <div class="art-card-sub">Figurative · Hand Carved</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/just-wed.jpg" data-title="Just Wed" data-type="Figurative · Couples">
+        <img src="img/portfolio/gallery1/just-wed.jpg" alt="Just Wed couple Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Just Wed</div>
+          <div class="art-card-sub">Figurative · Couples</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/guitar.jpg" data-title="Music Guitar" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/guitar.jpg" alt="Guitar player Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Music Guitar</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/soccer-kid.jpg" data-title="Soccer Player" data-type="Figurative · Hand Carved">
+        <img src="img/portfolio/gallery1/soccer-kid.jpg" alt="Soccer player Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Soccer Player</div>
+          <div class="art-card-sub">Figurative · Hand Carved</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/womb.jpg" data-title="In the Womb" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/womb.jpg" alt="In the Womb Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">In the Womb</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/couple-kiss.jpg" data-title="Kissing Couple" data-type="Figurative · Couples">
+        <img src="img/portfolio/gallery1/couple-kiss.jpg" alt="Kissing couple Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Kissing Couple</div>
+          <div class="art-card-sub">Figurative · Couples</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/2.jpg" data-title="Hands Together" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/2.jpg" alt="Hands Together Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Hands Together</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/one-eye.jpg" data-title="One Eye" data-type="Abstract · Hand Carved">
+        <img src="img/portfolio/gallery1/one-eye.jpg" alt="One Eye abstract Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">One Eye</div>
+          <div class="art-card-sub">Abstract · Hand Carved</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/brown-bird.jpg" data-title="Zimbabwean Bird" data-type="Animal · Serpentine Stone">
+        <img src="img/portfolio/gallery1/brown-bird.jpg" alt="Zimbabwean bird Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Zimbabwean Bird</div>
+          <div class="art-card-sub">Animal · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/impala.jpg" data-title="Impala" data-type="Animal · Hand Carved">
+        <img src="img/portfolio/gallery1/impala.jpg" alt="Impala Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Impala</div>
+          <div class="art-card-sub">Animal · Hand Carved</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/38.jpg" data-title="Big Face" data-type="Figurative · Serpentine Stone">
+        <img src="img/portfolio/gallery1/38.jpg" alt="Big Face Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Big Face</div>
+          <div class="art-card-sub">Figurative · Serpentine Stone</div>
+        </div>
+      </div>
+
+      <div class="art-card reveal" data-src="img/portfolio/gallery1/rings.jpg" data-title="Rings" data-type="Abstract · Hand Carved">
+        <img src="img/portfolio/gallery1/rings.jpg" alt="Rings abstract Shona sculpture" loading="lazy">
+        <div class="art-card-overlay">
+          <div class="art-card-zoom"><i class="fa fa-expand"></i></div>
+          <div class="art-card-title">Rings</div>
+          <div class="art-card-sub">Abstract · Hand Carved</div>
+        </div>
+      </div>
+
     </div>
+  </section>
 
-        <!-- Footer -->
-<footer>
- <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                   <li><i class="fa fa-whatsapp" > +263772494464 </i></li>
-                   <br>
-                   <li><i class="fa fa-weixin" > +8615940639461 </i></li><br>
-                        <li><a href="contact.html">Leave us a message </a>
-                        </li>
-                    </ul>
-                    <br>
-                    <span class="copyright">Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">Tafadzwa Muriritirwa</a> &copy; 2025</span>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline social-buttons">
-                        <li><a href="#"><i class="fa fa-twitter"></i></a>
-                        </li>
-                        <li><a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/?ref=br_rs"><i class="fa fa-facebook"></i></a>
-                        </li>
-                        <li><a href="https://a.meipian.me/3qi7euc"><i class="fa fa-weixin"></i></a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-whatsapp"></i></a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <ul class="list-inline quicklinks">
-                        <li><a href="#">Privacy Policy</a>
-                        </li>
-                        <li><a href="#">Terms of Use</a>
-                        </li>
-                        <li>Headquarters address: 4015 Nharira View Norton Zimbabwe</li>
-                        <li><a href="contact.html">Feedback Us / Enquiries</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </footer>
-<!-- LightBox -->
-<script src="js/lightbox-plus-jquery.min.js"></script>
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <button class="lightbox-close" id="lbClose">Close &times;</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous"><i class="fa fa-chevron-left"></i></button>
+    <div class="lightbox-inner">
+      <img class="lightbox-img" id="lbImg" src="" alt="">
+      <div class="lightbox-caption">
+        <div class="lightbox-caption-title" id="lbTitle"></div>
+        <div class="lightbox-caption-sub" id="lbSub"></div>
+      </div>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next"><i class="fa fa-chevron-right"></i></button>
+  </div>
 
- <!-- jQuery -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <div class="cta-strip">
+    <h2>Interested in a <em>Piece?</em></h2>
+    <p>Contact us about any sculpture — we'll provide pricing, dimensions, and arrange worldwide shipping.</p>
+    <a href="contact.html" class="btn-primary">Send an Enquiry</a>
+  </div>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+  <footer>
+    <div class="footer-brand">Mangwanani Art Gallery</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com/Mangwanani-Art-Gallery-1424490737671972/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa fa-facebook"></i></a>
+      <a href="https://a.meipian.me/3qi7euc" target="_blank" rel="noopener" aria-label="WeChat"><i class="fa fa-weixin"></i></a>
+      <a href="contact.html" aria-label="WhatsApp"><i class="fa fa-whatsapp"></i></a>
+    </div>
+    <div class="footer-credit">
+      Built by <a href="https://www.linkedin.com/in/tafadzwa-muriritirwa/" target="_blank" rel="noopener noreferrer">Tafadzwa Muriritirwa</a> &copy; 2026
+    </div>
+  </footer>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+  <script>
+    const cards = [...document.querySelectorAll('.art-card')];
+    const lb = document.getElementById('lightbox');
+    const lbImg = document.getElementById('lbImg');
+    const lbTitle = document.getElementById('lbTitle');
+    const lbSub = document.getElementById('lbSub');
+    let current = 0;
 
-    <!-- Contact Form JavaScript -->
-    <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
+    const open = (i) => {
+      current = i;
+      const c = cards[i];
+      lbImg.src = c.dataset.src;
+      lbImg.alt = c.dataset.title;
+      lbTitle.textContent = c.dataset.title;
+      lbSub.textContent = c.dataset.type;
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    };
 
-    <!-- Theme JavaScript -->
-    <script src="js/agency.min.js"></script>
+    const close = () => {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+    };
+
+    const step = (dir) => open((current + dir + cards.length) % cards.length);
+
+    cards.forEach((c, i) => c.addEventListener('click', () => open(i)));
+    document.getElementById('lbClose').addEventListener('click', close);
+    document.getElementById('lbPrev').addEventListener('click', () => step(-1));
+    document.getElementById('lbNext').addEventListener('click', () => step(1));
+    lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+
+    document.addEventListener('keydown', (e) => {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') step(-1);
+      if (e.key === 'ArrowRight') step(1);
+    });
+
+    document.getElementById('navToggle').addEventListener('click', () => {
+      document.getElementById('navLinks').classList.toggle('open');
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
 </body>
-
 </html>
